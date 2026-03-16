@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar Fox Services – Route-Based Solar Panel Cleaning</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1b2a'/><text x='4' y='24' font-size='22'>🦊</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-glow {
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(249,115,22,0.12) 0%, transparent 70%);
+    }
+    @keyframes routeDash {
+      to { stroke-dashoffset: -40; }
+    }
+    .route-line {
+      stroke-dasharray: 6 4;
+      animation: routeDash 1.2s linear infinite;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+    .nav-scrolled { background: rgba(13,27,42,0.97) !important; box-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+    .faq-answer.open { max-height: 500px; }
+    .badge-shine {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      box-shadow: 0 4px 20px rgba(249,115,22,0.4);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Brand -->
+      <a href="#" class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-[#f97316] flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        </div>
+        <span class="text-white font-bold text-lg tracking-tight">Solar Fox <span class="text-[#f97316]">Services</span></span>
+      </a>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#how-it-works" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">How It Works</a>
+        <a href="#why-solar-fox" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Why Solar Fox</a>
+        <a href="#testimonials" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Testimonials</a>
+        <a href="#pricing" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Pricing</a>
+        <a href="#faq" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">FAQ</a>
+        <a href="#contact" class="text-gray-300 hover:text-white text-sm font-medium transition-colors">Contact</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="bg-[#f97316] hover:bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 shadow-lg shadow-orange-500/25">Get a Free Quote</a>
+      </div>
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden text-white p-2 rounded-lg" aria-label="Toggle menu">
+        <svg id="ham-icon" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path id="ham-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          <path id="ham-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#0d1b2a] border-t border-white/10">
+    <div class="px-4 py-4 flex flex-col gap-3">
+      <a href="#how-it-works" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2 border-b border-white/5">How It Works</a>
+      <a href="#why-solar-fox" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2 border-b border-white/5">Why Solar Fox</a>
+      <a href="#testimonials" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2 border-b border-white/5">Testimonials</a>
+      <a href="#pricing" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2 border-b border-white/5">Pricing</a>
+      <a href="#faq" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2 border-b border-white/5">FAQ</a>
+      <a href="#contact" class="mobile-nav-link text-gray-300 hover:text-white text-sm font-medium py-2">Contact</a>
+      <a href="#contact" class="mobile-nav-link mt-2 bg-[#f97316] text-white text-sm font-semibold px-4 py-3 rounded-lg text-center">Get a Free Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="relative bg-[#0d1b2a] min-h-screen flex items-center overflow-hidden">
+  <div class="hero-glow absolute inset-0 pointer-events-none"></div>
+  <!-- Background grid -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 w-full">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left -->
+      <div class="fade-in-up">
+        <div class="inline-flex items-center gap-2 bg-[#f97316]/10 border border-[#f97316]/30 rounded-full px-4 py-1.5 mb-6">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#f97316"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Smart Route-Based Scheduling</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+          The Most Efficient Way to Clean Your <span class="gradient-text">Solar Panels</span>
+        </h1>
+
+        <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl">
+          We batch nearby homes on the same cleaning day, cutting overhead and passing the savings directly to you. Save up to <strong class="text-white">20% off standard rates</strong> just by joining the neighborhood route.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white font-bold px-7 py-4 rounded-xl transition-all duration-200 shadow-xl shadow-orange-500/30 text-base">
+            Check Route Availability
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-4 rounded-xl transition-all duration-200 text-base">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M10 8l6 4-6 4V8z"/></svg>
+            See How It Works
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="flex flex-wrap items-center gap-6">
+          <div class="flex items-center gap-3">
+            <div class="flex -space-x-2">
+              <div class="w-9 h-9 rounded-full border-2 border-[#0d1b2a] bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xs font-bold">SM</div>
+              <div class="w-9 h-9 rounded-full border-2 border-[#0d1b2a] bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold">JR</div>
+              <div class="w-9 h-9 rounded-full border-2 border-[#0d1b2a] bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-xs font-bold">FL</div>
+              <div class="w-9 h-9 rounded-full border-2 border-[#0d1b2a] bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-xs font-bold">DK</div>
+            </div>
+            <div>
+              <div class="flex text-[#f97316] text-xs">★★★★★</div>
+              <div class="text-gray-400 text-xs">Trusted by <strong class="text-white">2,000+</strong> homeowners</div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs text-gray-300">
+              <svg width="12" height="12" fill="#f97316" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Licensed & Insured
+            </span>
+            <span class="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1 text-xs text-gray-300">
+              <svg width="12" height="12" fill="#f97316" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              100% Satisfaction
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Route Card -->
+      <div class="relative fade-in-up" style="animation-delay:0.2s">
+        <!-- Save badge -->
+        <div class="absolute -top-4 -right-2 z-10 badge-shine text-white text-xs font-bold px-4 py-2 rounded-full rotate-3 shadow-xl">
+          Save up to 20%
+        </div>
+
+        <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 shadow-2xl">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="text-white font-bold text-base">How Your Job Fits the Route</h3>
+              <p class="text-gray-400 text-xs mt-0.5">Tuesday — East Mesa Loop</p>
+            </div>
+            <div class="bg-green-500/20 text-green-400 text-xs font-semibold px-3 py-1 rounded-full border border-green-500/30">
+              Route Active
+            </div>
+          </div>
+
+          <!-- SVG Route Map -->
+          <div class="bg-[#0d1b2a] rounded-xl p-4 mb-4 relative overflow-hidden">
+            <svg viewBox="0 0 320 200" width="100%" class="block">
+              <!-- Street grid faint -->
+              <line x1="0" y1="60" x2="320" y2="60" stroke="#1e3a5f" stroke-width="1"/>
+              <line x1="0" y1="120" x2="320" y2="120" stroke="#1e3a5f" stroke-width="1"/>
+              <line x1="0" y1="170" x2="320" y2="170" stroke="#1e3a5f" stroke-width="0.5"/>
+              <line x1="80" y1="0" x2="80" y2="200" stroke="#1e3a5f" stroke-width="1"/>
+              <line x1="160" y1="0" x2="160" y2="200" stroke="#1e3a5f" stroke-width="1"/>
+              <line x1="240" y1="0" x2="240" y2="200" stroke="#1e3a5f" stroke-width="1"/>
+
+              <!-- Route path animated -->
+              <polyline points="40,140 40,60 120,60 200,60 200,120 280,120" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="route-line"/>
+
+              <!-- House stops -->
+              <g>
+                <!-- Stop 1 -->
+                <circle cx="40" cy="140" r="14" fill="#f97316" opacity="0.2"/>
+                <circle cx="40" cy="140" r="9" fill="#f97316"/>
+                <text x="40" y="144" text-anchor="middle" fill="white" font-size="9" font-weight="bold">1</text>
+                <!-- Stop 2 -->
+                <circle cx="120" cy="60" r="14" fill="#f97316" opacity="0.2"/>
+                <circle cx="120" cy="60" r="9" fill="#f97316"/>
+                <text x="120" y="64" text-anchor="middle" fill="white" font-size="9" font-weight="bold">2</text>
+                <!-- Stop 3 (YOU) -->
+                <circle cx="200" cy="60" r="16" fill="#f97316" opacity="0.3"/>
+                <circle cx="200" cy="60" r="11" fill="#f97316"/>
+                <text x="200" y="64" text-anchor="middle" fill="white" font-size="8" font-weight="bold">YOU</text>
+                <!-- Stop 4 -->
+                <circle cx="200" cy="120" r="14" fill="#1e40af" opacity="0.2"/>
+                <circle cx="200" cy="120" r="9" fill="#3b82f6"/>
+                <text x="200" y="124" text-anchor="middle" fill="white" font-size="9" font-weight="bold">4</text>
+                <!-- Stop 5 -->
+                <circle cx="280" cy="120" r="14" fill="#1e40af" opacity="0.2"/>
+                <circle cx="280" cy="120" r="9" fill="#3b82f6"/>
+                <text x="280" y="124" text-anchor="middle" fill="white" font-size="9" font-weight="bold">5</text>
+              </g>
+
+              <!-- Labels -->
+              <text x="40" y="162" text-anchor="middle" fill="#94a3b8" font-size="7">Start</text>
+              <text x="200" y="80" text-anchor="middle" fill="#f97316" font-size="7" font-weight="bold">Your Home</text>
+              <text x="280" y="140" text-anchor="middle" fill="#94a3b8" font-size="7">End</text>
+            </svg>
+          </div>
+
+          <!-- Route stats -->
+          <div class="grid grid-cols-3 gap-3 mb-4">
+            <div class="bg-[#0d1b2a] rounded-lg p-3 text-center">
+              <div class="text-[#f97316] font-bold text-lg">5</div>
+              <div class="text-gray-400 text-xs">Stops Today</div>
+            </div>
+            <div class="bg-[#0d1b2a] rounded-lg p-3 text-center">
+              <div class="text-[#f97316] font-bold text-lg">3.2mi</div>
+              <div class="text-gray-400 text-xs">Route Span</div>
+            </div>
+            <div class="bg-[#0d1b2a] rounded-lg p-3 text-center border border-[#f97316]/30">
+              <div class="text-green-400 font-bold text-lg">-20%</div>
+              <div class="text-gray-400 text-xs">Your Discount</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 bg-[#f97316]/10 border border-[#f97316]/20 rounded-lg px-3 py-2">
+            <svg width="14" height="14" fill="#f97316" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span class="text-gray-300 text-xs">You qualify for the <strong class="text-[#f97316]">Route Saver</strong> discount on this booking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how-it-works" class="bg-[#0d1b2a] py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-[#f97316]/10 border border-[#f97316]/30 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Simple Process</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">How It Works</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Get sparkling clean solar panels in four easy steps — and pay less because you're part of an efficient neighborhood route.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Step 1 -->
+      <div class="relative bg-[#111d2e] border border-white/10 rounded-2xl p-6 overflow-hidden group hover:border-[#f97316]/40 transition-all duration-300">
+        <div class="absolute top-4 right-4 text-7xl font-black text-white/5 group-hover:text-[#f97316]/10 transition-colors leading-none">01</div>
+        <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center mb-4">
+          <svg width="22" height="22" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Enter Your Address</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Type in your home address and we'll instantly check whether an active route passes through your neighborhood.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative bg-[#111d2e] border border-white/10 rounded-2xl p-6 overflow-hidden group hover:border-[#f97316]/40 transition-all duration-300">
+        <div class="absolute top-4 right-4 text-7xl font-black text-white/5 group-hover:text-[#f97316]/10 transition-colors leading-none">02</div>
+        <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center mb-4">
+          <svg width="22" height="22" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">We Analyze the Route</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Our scheduling engine evaluates nearby bookings to place your home on the most cost-efficient cleaning route.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative bg-[#111d2e] border border-white/10 rounded-2xl p-6 overflow-hidden group hover:border-[#f97316]/40 transition-all duration-300">
+        <div class="absolute top-4 right-4 text-7xl font-black text-white/5 group-hover:text-[#f97316]/10 transition-colors leading-none">03</div>
+        <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center mb-4">
+          <svg width="22" height="22" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Get Your Route Price</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Receive a transparent, route-adjusted quote with your discount applied. No haggling, no hidden fees — just savings.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative bg-[#111d2e] border border-[#f97316]/40 rounded-2xl p-6 overflow-hidden group hover:border-[#f97316]/60 transition-all duration-300">
+        <div class="absolute top-4 right-4 text-7xl font-black text-[#f97316]/10 leading-none">04</div>
+        <div class="w-12 h-12 bg-[#f97316] rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-orange-500/30">
+          <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Book & Relax</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Confirm your spot on the route, get a reminder the morning of your service, and watch your energy output climb.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY SOLAR FOX ===== -->
+<section id="why-solar-fox" class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Stats Strip -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+      <div class="bg-[#0d1b2a] rounded-2xl p-6 text-center">
+        <div class="text-3xl font-extrabold text-[#f97316] mb-1">2,000+</div>
+        <div class="text-gray-400 text-sm">Homeowners Served</div>
+      </div>
+      <div class="bg-[#0d1b2a] rounded-2xl p-6 text-center">
+        <div class="text-3xl font-extrabold text-[#f97316] mb-1">20%</div>
+        <div class="text-gray-400 text-sm">Average Savings</div>
+      </div>
+      <div class="bg-[#0d1b2a] rounded-2xl p-6 text-center">
+        <div class="text-3xl font-extrabold text-[#f97316] mb-1">30%</div>
+        <div class="text-gray-400 text-sm">Energy Restored</div>
+      </div>
+      <div class="bg-[#0d1b2a] rounded-2xl p-6 text-center">
+        <div class="text-3xl font-extrabold text-[#f97316] mb-1">4.9★</div>
+        <div class="text-gray-400 text-sm">Average Rating</div>
+      </div>
+    </div>
+
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Why Choose Us</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0d1b2a] mb-4">Everything You Need, Nothing You Don't</h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">We built Solar Fox Services around one idea: efficient, professional solar cleaning that saves you money without cutting corners.</p>
+    </div>
+
+    <!-- Benefit Cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">Route-Based Pricing</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">By grouping homes on the same route, we reduce travel time and cost — then share those savings with you automatically.</p>
+      </div>
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">Licensed & Insured</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Every technician is fully licensed, background-checked, and covered by comprehensive liability insurance for your peace of mind.</p>
+      </div>
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">Eco-Friendly Process</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">We use purified, deionized water with biodegradable solutions — safe for your panels, your yard, and the environment.</p>
+      </div>
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">Boost Energy Output</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Dirty panels lose up to 30% efficiency. A professional clean restores peak performance and maximizes your solar ROI.</p>
+      </div>
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">100% Satisfaction Guarantee</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Not happy? We'll re-clean at no charge. We don't consider a job done until you're completely satisfied with the results.</p>
+      </div>
+
+      <div class="group border border-gray-100 hover:border-[#f97316]/40 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-orange-50">
+        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-[#f97316] transition-colors duration-300">
+          <svg width="22" height="22" fill="none" stroke="#f97316" class="group-hover:stroke-white transition-colors" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3 class="text-[#0d1b2a] font-bold text-base mb-2">Flexible Scheduling</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Choose from morning or afternoon windows. Recurring service plans available with additional discounts for quarterly bookings.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" class="bg-[#0d1b2a] py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-[#f97316]/10 border border-[#f97316]/30 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Customer Reviews</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">What Homeowners Are Saying</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Thousands of happy customers across the Southwest. Here is what a few of them had to say about their Solar Fox experience.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;I was skeptical at first, but the route-based pricing actually saved me $27 off what I&#39;d normally pay. The panels look brand new and my energy bill dropped noticeably. Will definitely book again.&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-xs font-bold">SM</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Sarah M.</div>
+            <div class="text-gray-500 text-xs">Phoenix, AZ &middot; 24 panels</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;Super professional crew. They were done in under an hour and left zero mess. I appreciated that they showed me the before/after output readings &mdash; my system was producing 22% less before the clean!&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold">JR</div>
+          <div>
+            <div class="text-white font-semibold text-sm">James R.</div>
+            <div class="text-gray-500 text-xs">San Diego, CA &middot; 18 panels</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;Booked online in 5 minutes, got a confirmation the same day. The technician was friendly, knowledgeable and explained exactly what he was doing. Best solar cleaning service in Tucson by far.&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white text-xs font-bold">FL</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Fernanda L.</div>
+            <div class="text-gray-500 text-xs">Tucson, AZ &middot; 32 panels</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;Living in Vegas means dust is a constant problem. Solar Fox comes out quarterly and my system stays at peak performance year-round. The route discount means I pay less than any other service I&#39;ve tried.&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-xs font-bold">DK</div>
+          <div>
+            <div class="text-white font-semibold text-sm">David K.</div>
+            <div class="text-gray-500 text-xs">Las Vegas, NV &middot; 28 panels</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;I love that the whole concept is built around efficiency. They didn&#39;t just clean my panels &mdash; they optimized the entire process to benefit the whole neighborhood. Clever business model and excellent results.&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white text-xs font-bold">PS</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Priya S.</div>
+            <div class="text-gray-500 text-xs">Riverside, CA &middot; 20 panels</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6 hover:border-[#f97316]/30 transition-all duration-300">
+        <div class="flex text-[#f97316] mb-4 text-sm">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-5">&#8220;Satisfaction guarantee is real &mdash; there was one spot I wasn&#39;t happy with and they came back the next day, no questions asked. That kind of service is rare. Solar Fox has earned a customer for life.&#8221;</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white text-xs font-bold">TW</div>
+          <div>
+            <div class="text-white font-semibold text-sm">Tom W.</div>
+            <div class="text-gray-500 text-xs">Sacramento, CA &middot; 16 panels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overall Rating Bar -->
+    <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-6">
+      <div class="flex flex-col sm:flex-row items-center gap-6">
+        <div class="text-center">
+          <div class="text-5xl font-extrabold text-white">4.9</div>
+          <div class="flex text-[#f97316] text-lg mt-1">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="text-gray-400 text-xs mt-1">Overall Rating</div>
+        </div>
+        <div class="flex-1 w-full">
+          <div class="space-y-2">
+            <div class="flex items-center gap-3"><span class="text-gray-400 text-xs w-4">5</span><div class="flex-1 bg-white/10 rounded-full h-2"><div class="bg-[#f97316] h-2 rounded-full" style="width:92%"></div></div><span class="text-gray-400 text-xs w-6">92%</span></div>
+            <div class="flex items-center gap-3"><span class="text-gray-400 text-xs w-4">4</span><div class="flex-1 bg-white/10 rounded-full h-2"><div class="bg-[#f97316] h-2 rounded-full" style="width:6%"></div></div><span class="text-gray-400 text-xs w-6">6%</span></div>
+            <div class="flex items-center gap-3"><span class="text-gray-400 text-xs w-4">3</span><div class="flex-1 bg-white/10 rounded-full h-2"><div class="bg-[#f97316] h-2 rounded-full" style="width:1%"></div></div><span class="text-gray-400 text-xs w-6">1%</span></div>
+            <div class="flex items-center gap-3"><span class="text-gray-400 text-xs w-4">2</span><div class="flex-1 bg-white/10 rounded-full h-2"><div class="bg-[#f97316] h-2 rounded-full" style="width:0%"></div></div><span class="text-gray-400 text-xs w-6">0%</span></div>
+            <div class="flex items-center gap-3"><span class="text-gray-400 text-xs w-4">1</span><div class="flex-1 bg-white/10 rounded-full h-2"><div class="bg-[#f97316] h-2 rounded-full" style="width:0%"></div></div><span class="text-gray-400 text-xs w-6">0%</span></div>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-white">2,400+</div>
+          <div class="text-gray-400 text-xs">Total Reviews</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ===== PRICING ===== -->
+<section id="pricing" class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Simple Pricing</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0d1b2a] mb-4">Transparent, Route-Adjusted Pricing</h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">All prices include labor, equipment, eco-friendly cleaning solution, and our 100% satisfaction guarantee. No surprises.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+      <!-- Standard Clean -->
+      <div class="border border-gray-200 rounded-2xl p-8 flex flex-col hover:shadow-xl transition-all duration-300">
+        <div class="mb-6">
+          <h3 class="text-[#0d1b2a] font-bold text-xl mb-1">Standard Clean</h3>
+          <p class="text-gray-500 text-sm">Full wash, no extras</p>
+        </div>
+        <div class="mb-6">
+          <span class="text-4xl font-extrabold text-[#0d1b2a]">$120</span>
+          <span class="text-gray-400 text-sm ml-1">/ visit</span>
+        </div>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Up to 20 panels
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Deionized water rinse
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Spot-free finish
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Satisfaction guarantee
+          </li>
+          <li class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#d1d5db" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            Route discount
+          </li>
+          <li class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#d1d5db" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            Performance report
+          </li>
+        </ul>
+        <a href="#contact" class="block text-center border-2 border-[#f97316] text-[#f97316] hover:bg-[#f97316] hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200">Get Started</a>
+      </div>
+
+      <!-- Route Saver (Most Popular) -->
+      <div class="bg-[#0d1b2a] border-2 border-[#f97316] rounded-2xl p-8 flex flex-col relative shadow-2xl shadow-orange-500/10 scale-105">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span class="badge-shine text-white text-xs font-bold px-5 py-1.5 rounded-full whitespace-nowrap">Most Popular</span>
+        </div>
+        <div class="mb-6">
+          <h3 class="text-white font-bold text-xl mb-1">Route Saver</h3>
+          <p class="text-gray-400 text-sm">Best value when on a route</p>
+        </div>
+        <div class="mb-2">
+          <span class="text-4xl font-extrabold text-white">$89</span>
+          <span class="text-gray-400 text-sm ml-1">/ visit</span>
+        </div>
+        <div class="mb-6">
+          <span class="text-gray-400 text-sm line-through">was $120</span>
+          <span class="ml-2 bg-green-500/20 text-green-400 text-xs font-semibold px-2 py-0.5 rounded-full">Save 26%</span>
+        </div>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Up to 24 panels
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Deionized water rinse
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Spot-free finish
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Satisfaction guarantee
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Route discount applied
+          </li>
+          <li class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#6b7280" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            Performance report
+          </li>
+        </ul>
+        <a href="#contact" class="block text-center bg-[#f97316] hover:bg-orange-500 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-orange-500/30">Book Route Saver</a>
+      </div>
+
+      <!-- Premium Detail -->
+      <div class="border border-gray-200 rounded-2xl p-8 flex flex-col hover:shadow-xl transition-all duration-300">
+        <div class="mb-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-[#0d1b2a] font-bold text-xl">Premium Detail</h3>
+            <span class="bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200">Best Value</span>
+          </div>
+          <p class="text-gray-500 text-sm mt-1">Deep clean + full report</p>
+        </div>
+        <div class="mb-2 mt-4">
+          <span class="text-4xl font-extrabold text-[#0d1b2a]">$159</span>
+          <span class="text-gray-400 text-sm ml-1">/ visit</span>
+        </div>
+        <div class="mb-6">
+          <span class="text-gray-400 text-sm line-through">was $200</span>
+          <span class="ml-2 bg-green-50 text-green-600 text-xs font-semibold px-2 py-0.5 rounded-full border border-green-200">Save 20%</span>
+        </div>
+        <ul class="space-y-3 mb-8 flex-1">
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Up to 40 panels
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Deionized water + scrub
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Frame &amp; edge detailing
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Satisfaction guarantee
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Route discount applied
+          </li>
+          <li class="flex items-center gap-2 text-gray-600 text-sm">
+            <svg width="16" height="16" fill="none" stroke="#f97316" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Energy performance report
+          </li>
+        </ul>
+        <a href="#contact" class="block text-center border-2 border-[#f97316] text-[#f97316] hover:bg-[#f97316] hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200">Get Started</a>
+      </div>
+
+    </div>
+
+    <p class="text-center text-gray-400 text-sm mt-8">All plans include free rescheduling up to 24 hours before your appointment. Prices may vary for homes with 40+ panels or steep roofs.</p>
+  </div>
+</section>
+<!-- ===== FAQ ===== -->
+<section id="faq" class="py-24" style="background:#f8fafc">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">FAQ</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#0d1b2a] mb-4">Frequently Asked Questions</h2>
+      <p class="text-gray-500 text-lg">Everything you need to know about Solar Fox Services and our route-based model.</p>
+    </div>
+    <div class="space-y-3" id="faq-container">
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="0">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">How does route-based pricing work?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">We schedule multiple homes in the same neighborhood on the same cleaning day. This reduces our travel time and fuel costs significantly. We pass those savings directly to you &mdash; so you get the same professional service at up to 20% less than standard rates, just by being on an active route.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="1">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">How much can I save with route-based pricing?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">Most customers save between 15&ndash;20% compared to a standard single-home booking. The exact discount depends on how many homes are on your route and how close they are to each other. Your quote will always show the route discount applied clearly.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="2">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">How often should I clean my solar panels?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">We recommend cleaning every 6 months in most areas &mdash; spring and fall. In dusty regions like Phoenix, Tucson, or Las Vegas, quarterly cleaning (every 3 months) keeps output at its peak. Dirty panels can lose 25&ndash;30% of their energy production.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="3">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">Are you licensed and insured?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">Yes. Solar Fox Services is fully licensed, bonded, and carries comprehensive general liability insurance. All technicians are background-checked and trained on safe roof and panel cleaning procedures. We carry proof of insurance and will provide it upon request.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="4">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">What cleaning products do you use?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">We use purified, deionized water with biodegradable, pH-neutral cleaning solution that is safe for all panel manufacturers and warranties. We never use harsh chemicals, abrasive tools, or pressure washers that could damage your panels or void your warranty.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="5">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">How long does the cleaning take?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">A standard home with 20&ndash;24 panels typically takes 45&ndash;60 minutes. Our Premium Detail service takes slightly longer due to frame and edge work. You do not need to be home &mdash; just make sure the water access point is unlocked if needed.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="6">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">Do I need to be home during the service?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">No, you do not need to be home. We just ask that you let us know if there are any access issues (locked gates, dogs, etc.) when booking. We will send you a text when we arrive and again when we are done, along with a photo of your clean panels.</p>
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-[#f97316]/40 transition-all duration-300">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left" data-index="7">
+          <span class="text-[#0d1b2a] font-semibold text-base pr-4">What if I am not satisfied with the results?</span>
+          <svg class="faq-icon flex-shrink-0 w-5 h-5 text-[#f97316] transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="faq-answer px-6">
+          <p class="text-gray-600 text-sm leading-relaxed pb-5">We stand behind our work with a 100% satisfaction guarantee. If you are not completely happy with the results, contact us within 48 hours and we will return to re-clean at no charge. We consider a job done only when you are satisfied.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="bg-[#0d1b2a] py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 bg-[#f97316]/10 border border-[#f97316]/30 rounded-full px-4 py-1.5 mb-4">
+        <span class="text-[#f97316] text-xs font-semibold tracking-wide uppercase">Get In Touch</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Book Your Free Quote Today</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Enter your address and we will check whether an active route is running in your area. No obligation &mdash; just savings.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+
+      <!-- Left: Contact Info -->
+      <div>
+        <div class="space-y-6 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-base">(602) 555-0198</div>
+              <div class="text-gray-400 text-sm">Call or text &mdash; we respond fast</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-base">hello@solarfoxservices.com</div>
+              <div class="text-gray-400 text-sm">We reply within 1 business hour</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-[#f97316]/10 border border-[#f97316]/30 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-base">Mon&ndash;Sat: 7am &ndash; 6pm</div>
+              <div class="text-gray-400 text-sm">Sunday: Closed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Areas -->
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-3 uppercase tracking-wide">Service Areas</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Phoenix, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Scottsdale, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Tempe, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Chandler, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Mesa, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Tucson, AZ</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Las Vegas, NV</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Henderson, NV</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">San Diego, CA</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Riverside, CA</span>
+            <span class="bg-white/5 border border-white/15 text-gray-300 text-xs px-3 py-1.5 rounded-full">Sacramento, CA</span>
+            <span class="bg-white/5 border border-[#f97316]/30 text-[#f97316] text-xs px-3 py-1.5 rounded-full">+ More Areas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Booking Form -->
+      <div class="bg-[#111d2e] border border-white/10 rounded-2xl p-8">
+        <div id="contact-form-wrapper">
+          <h3 class="text-white font-bold text-xl mb-6">Check Route Availability</h3>
+          <form id="contact-form" class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-400 text-xs font-medium mb-1.5">Full Name *</label>
+                <input type="text" name="name" required placeholder="Jane Smith" class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#f97316] transition-colors" />
+              </div>
+              <div>
+                <label class="block text-gray-400 text-xs font-medium mb-1.5">Phone Number *</label>
+                <input type="tel" name="phone" required placeholder="(602) 555-0100" class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#f97316] transition-colors" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-gray-400 text-xs font-medium mb-1.5">Email Address *</label>
+              <input type="email" name="email" required placeholder="jane@example.com" class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#f97316] transition-colors" />
+            </div>
+            <div>
+              <label class="block text-gray-400 text-xs font-medium mb-1.5">Service Address *</label>
+              <input type="text" name="address" required placeholder="123 Main St, Phoenix, AZ 85001" class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#f97316] transition-colors" />
+            </div>
+            <div>
+              <label class="block text-gray-400 text-xs font-medium mb-1.5">Number of Panels</label>
+              <select name="panels" class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-[#f97316] transition-colors">
+                <option value="">Select panel count</option>
+                <option value="1-10">1 &ndash; 10 panels</option>
+                <option value="11-20">11 &ndash; 20 panels</option>
+                <option value="21-30">21 &ndash; 30 panels</option>
+                <option value="31-40">31 &ndash; 40 panels</option>
+                <option value="40+">40+ panels</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-gray-400 text-xs font-medium mb-1.5">Additional Notes</label>
+              <textarea name="notes" rows="3" placeholder="Gate code, roof access, or anything else we should know..." class="w-full bg-[#0d1b2a] border border-white/15 rounded-lg px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-[#f97316] transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-[#f97316] hover:bg-orange-500 text-white font-bold py-4 rounded-xl transition-all duration-200 shadow-lg shadow-orange-500/30 text-base">
+              Check Route Availability &rarr;
+            </button>
+            <p class="text-gray-500 text-xs text-center">No obligation. We will respond within 1 business hour with your route price.</p>
+          </form>
+        </div>
+        <!-- Success Message -->
+        <div id="form-success" class="hidden text-center py-8">
+          <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg width="32" height="32" fill="none" stroke="#22c55e" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-white font-bold text-xl mb-2">You are on the list!</h3>
+          <p class="text-gray-400 text-sm mb-1">We have received your request and will check route availability for your address.</p>
+          <p class="text-gray-400 text-sm">Expect a response within <strong class="text-white">1 business hour</strong> with your route-adjusted quote.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== FOOTER ===== -->
+<footer id="footer" style="background:#060d18;" class="pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+
+      <!-- Brand col -->
+      <div class="lg:col-span-2">
+        <a href="#" class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-lg bg-[#f97316] flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          </div>
+          <span class="text-white font-bold text-lg tracking-tight">Solar Fox <span class="text-[#f97316]">Services</span></span>
+        </a>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6">Route-based solar panel cleaning that saves you money. Serving homeowners across Arizona, Nevada, and California.</p>
+        <!-- Social -->
+        <div class="flex gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 bg-white/5 hover:bg-[#f97316] border border-white/10 rounded-lg flex items-center justify-center transition-all duration-200">
+            <svg width="16" height="16" fill="#9ca3af" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 bg-white/5 hover:bg-[#f97316] border border-white/10 rounded-lg flex items-center justify-center transition-all duration-200">
+            <svg width="16" height="16" fill="none" stroke="#9ca3af" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Google" class="w-9 h-9 bg-white/5 hover:bg-[#f97316] border border-white/10 rounded-lg flex items-center justify-center transition-all duration-200">
+            <svg width="16" height="16" fill="#9ca3af" viewBox="0 0 24 24"><path d="M21.35 11.1H12v2.8h5.35c-.5 2.4-2.6 4.1-5.35 4.1-3.3 0-6-2.7-6-6s2.7-6 6-6c1.55 0 2.95.6 4 1.55l2.1-2.1C16.8 3.9 14.5 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.6-3.7 8.6-8.9 0-.6-.05-1-.25-1z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 bg-white/5 hover:bg-[#f97316] border border-white/10 rounded-lg flex items-center justify-center transition-all duration-200">
+            <svg width="16" height="16" fill="#9ca3af" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon fill="#060d18" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4">Company</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">About Us</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Our Team</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Careers</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Press</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4">Services</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#pricing" class="text-gray-500 hover:text-white text-sm transition-colors">Route Saver Clean</a></li>
+          <li><a href="#pricing" class="text-gray-500 hover:text-white text-sm transition-colors">Standard Clean</a></li>
+          <li><a href="#pricing" class="text-gray-500 hover:text-white text-sm transition-colors">Premium Detail</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Commercial Panels</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Recurring Plans</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4">Support</h4>
+        <ul class="space-y-2.5">
+          <li><a href="#faq" class="text-gray-500 hover:text-white text-sm transition-colors">FAQ</a></li>
+          <li><a href="#contact" class="text-gray-500 hover:text-white text-sm transition-colors">Contact Us</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Refund Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 text-sm">&copy; 2024 Solar Fox Services LLC. All rights reserved.</p>
+      <p class="text-gray-600 text-sm">Licensed &middot; Bonded &middot; Insured &middot; AZ ROC #345678</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== INLINE JAVASCRIPT ===== -->
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamOpen = document.getElementById('ham-open');
+  const hamClose = document.getElementById('ham-close');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('hidden', !menuOpen);
+    hamOpen.classList.toggle('hidden', menuOpen);
+    hamClose.classList.toggle('hidden', !menuOpen);
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.add('hidden');
+      hamOpen.classList.remove('hidden');
+      hamClose.classList.add('hidden');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const icon = trigger.querySelector('.faq-icon');
+      const isOpen = answer.classList.contains('open');
+
+      // Close all others
+      document.querySelectorAll('.faq-answer.open').forEach(a => {
+        a.classList.remove('open');
+        a.previousElementSibling && a.previousElementSibling.querySelector('.faq-icon') &&
+          (a.previousElementSibling.querySelector('.faq-icon').style.transform = '');
+      });
+
+      if (!isOpen) {
+        answer.classList.add('open');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        icon.style.transform = '';
+      }
+    });
+  });
+
+  // Contact form submit
+  const form = document.getElementById('contact-form');
+  const formWrapper = document.getElementById('contact-form-wrapper');
+  const formSuccess = document.getElementById('form-success');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formWrapper.style.display = 'none';
+      formSuccess.classList.remove('hidden');
+      formSuccess.style.display = 'block';
+    });
+  }
+</script>
+
+</body>
+</html>

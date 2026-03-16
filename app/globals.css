@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0d1b2a;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --color-navy-950: #060d18;
+  --color-navy-900: #0d1b2a;
+  --color-navy-800: #132336;
+  --color-navy-700: #1a2f47;
+  --color-orange-brand: #f97316;
+  --color-orange-light: #fb923c;
+  --color-orange-dark: #ea6c0a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+}
+
+.card-border {
+  border: 1px solid rgba(249, 115, 22, 0.15);
+}
+
+.card-border:hover {
+  border-color: rgba(249, 115, 22, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.route-line {
+  stroke-dasharray: 6 4;
+  animation: dash 1.5s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
